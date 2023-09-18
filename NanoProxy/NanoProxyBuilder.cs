@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -17,10 +16,9 @@ namespace NanoProxy
         private readonly static ModuleBuilder ModuleBuilder = AssemblyBuilder.DefineDynamicModule(AssemblyName.Name);
         private readonly static object Lock = new object();
 
-        public NanoProxyBuilder()
-        {
-        }
-
+        /// <summary>Creates a proxy.</summary>
+        /// <typeparam name="T">Type of the proxy.</typeparam>
+        /// <returns>NanoProxy</returns>
         public NanoProxy<T> CreateProxy<T>() where T : class, new()
         {
             Type proxyType;
