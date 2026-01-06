@@ -4,12 +4,12 @@ using NUnit.Framework;
 namespace Given_nano_proxy.when_setting_property_of_type_of
 {
     [TestFixture]
-    public class nullable_integer : NanoProxyTest
+    public class integer : NanoProxyTest
     {
         public override void TheTest()
         {
-            Proxy.WrapedObject.NullableIntegerProperty = 50;
-            Proxy.WrapedObject.NullableIntegerProperty = 1;
+            Proxy.WrapedObject.IntegerProperty = 50;
+            Proxy.WrapedObject.IntegerProperty = 1;
         }
 
         [Test]
@@ -27,7 +27,7 @@ namespace Given_nano_proxy.when_setting_property_of_type_of
         [Test]
         public void Should_intercept_property_type()
         {
-            PropertyInfo.Name.Should().Be("NullableIntegerProperty");
+            PropertyInfo.Name.Should().Be("IntegerProperty");
         }
     }
 }

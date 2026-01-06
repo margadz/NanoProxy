@@ -18,8 +18,7 @@ namespace NanoProxy
 
         internal void InternalSetInterceptor(object value, object oldValue, string propertyName)
         {
-            PropertyInfo propertyInfo;
-            if (!_propertiesCache.TryGetValue(propertyName, out propertyInfo))
+            if (!_propertiesCache.TryGetValue(propertyName, out PropertyInfo propertyInfo))
             {
                 _propertiesCache[propertyName] = propertyInfo = typeof(T).GetProperty(propertyName, BindingFlags.Public | BindingFlags.Instance);
             }

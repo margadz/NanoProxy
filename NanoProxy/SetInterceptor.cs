@@ -8,5 +8,5 @@ namespace NanoProxy
     /// <param name="propertyInfo">Property info.</param>
     public delegate void SetInterceptor(object value, object oldValue, PropertyInfo propertyInfo);
 
-    internal delegate void InternalSetInterceptor(object value, object oldValue, string propertyName);
+    public delegate void InternalSetInterceptor(object value, object oldValue, string propertyName);
 }

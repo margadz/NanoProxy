@@ -5,5 +5,7 @@
         public virtual string StringProperty { get; set; }
 
         public virtual int? NullableIntegerProperty { get; set; }
+
+        public virtual int IntegerProperty { get; set; }
     }
 }

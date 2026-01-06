@@ -29,7 +29,7 @@ namespace NanoProxy
                     var typeBuilder = ModuleBuilder.DefineType($"NanoProxyOf_{typeof(T).Name}", TypeAttributes.Class | TypeAttributes.Public, typeof(T));
                     typeBuilder.DefineDefaultConstructor(MethodAttributes.Public);
 
-                    var fieldBuilder = typeBuilder.DefineField("_setterInterceptor", typeof(SetInterceptor), FieldAttributes.Private);
+                    var fieldBuilder = typeBuilder.DefineField("_setterInterceptor", typeof(InternalSetInterceptor), FieldAttributes.Private);
                     var ctorBuilder = typeBuilder.DefineConstructor(MethodAttributes.Public, CallingConventions.Standard, new Type[] { typeof(InternalSetInterceptor) });
                     var ctorIl = ctorBuilder.GetILGenerator();
                     ctorIl.Emit(OpCodes.Ldarg_0);
@@ -70,10 +70,19 @@ namespace NanoProxy
                 Generator.Emit(OpCodes.Ldarg_0);
                 Generator.Emit(OpCodes.Ldfld, setterInterceptor);
                 Generator.Emit(OpCodes.Ldarg_1);
+                if (returnType.IsValueType)
+                {
+                    Generator.Emit(OpCodes.Box, returnType);
+                }
+
                 Generator.Emit(OpCodes.Ldarg_0);
                 Generator.Emit(OpCodes.Call, property.GetGetMethod());
+                if (returnType.IsValueType)
+                {
+                    Generator.Emit(OpCodes.Box, returnType);
+                }
                 Generator.Emit(OpCodes.Ldstr, property.Name);
-                Generator.Emit(OpCodes.Callvirt, typeof(SetInterceptor).GetMethod("Invoke"));
+                Generator.Emit(OpCodes.Callvirt, typeof(InternalSetInterceptor).GetMethod("Invoke"));
                 Generator.Emit(OpCodes.Nop);
                 Generator.Emit(OpCodes.Ldarg_0);
                 Generator.Emit(OpCodes.Ldarg_1);
