@@ -14,7 +14,7 @@ namespace NanoProxy
         public T WrapedObject { get; internal set; }
 
         /// <summary>Property setter interceptor.</summary>
-        public SetInterceptor SetInterceptor { get; set; }
+        public SetInterceptor Interceptor { get; set; }
 
         internal void InternalSetInterceptor(object value, object oldValue, string propertyName)
         {
@@ -23,7 +23,7 @@ namespace NanoProxy
                 _propertiesCache[propertyName] = propertyInfo = typeof(T).GetProperty(propertyName, BindingFlags.Public | BindingFlags.Instance);
             }
 
-            SetInterceptor?.Invoke(value, oldValue, propertyInfo);
+            Interceptor?.Invoke(value, oldValue, propertyInfo);
         }
     }
 }

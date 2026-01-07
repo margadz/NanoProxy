@@ -14,7 +14,13 @@ NanoProxy is a lightweight .NET library for generating runtime proxies that inte
 
 ### Installation
 
-Add NanoProxy to your solution as a project reference or include the source files in your project.
+Install via NuGet Package Manager:
+```
+dotnet add package NanoProxy
+```
+Or add NanoProxy to your solution as a project reference or include the source files in your project:
+https://github.com/margadz/NanoProxy/tree/master.
+
 
 ### Usage Example
 
@@ -29,7 +35,7 @@ public virtual string StringProperty { get; set; } }
 You can create a proxy and intercept property changes:
 ````csharp
 var builder = new NanoProxy.NanoProxyBuilder(); var proxy = builder.CreateProxy();
-proxy.SetInterceptor = (value, oldValue, propertyName) => { Console.WriteLine($"Property '{propertyName}' changed from '{oldValue}' to '{value}'"); };
+proxy.Interceptor = (value, oldValue, propertyName) => { Console.WriteLine($"Property '{propertyName}' changed from '{oldValue}' to '{value}'"); };
 proxy.WrapedObject.IntegerProperty = 42; // Interceptor is called 
 proxy.WrapedObject.NullableIntegerProperty = null; // Interceptor is called
 ````

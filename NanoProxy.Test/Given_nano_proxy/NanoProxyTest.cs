@@ -27,7 +27,7 @@ namespace Given_nano_proxy
             OldValue = null;
             PropertyInfo = null;
 
-            Proxy.SetInterceptor = (value, oldValue, property) =>
+            Proxy.Interceptor = (value, oldValue, property) =>
             {
                 Value = value;
                 OldValue = oldValue;
