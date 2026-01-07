@@ -6,7 +6,7 @@ NanoProxy is a lightweight .NET library for generating runtime proxies that inte
 
 - Dynamic proxy generation using `System.Reflection.Emit`
 - Intercepts property setters and exposes old/new values and property name
-- Supports both value types and nullable types
+- Supports both value types, nullable types and strings
 - Thread-safe proxy type caching
 - Compatible with .NET 8
 
