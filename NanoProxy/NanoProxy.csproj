@@ -5,14 +5,15 @@
     <Platforms>AnyCPU;x64</Platforms>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>NanoProxy</Title>
-    <Version>0.2.0</Version>
+    <Version>0.2.1</Version>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
     <ItemGroup>
-        <None Include="..\README.md" Pack="true" PackagePath="\"/>
-		<None Include="..\LICENSE" Pack="true" PackagePath="\"/>
+        <None Include="..\README.md" Pack="true" PackagePath="\" />
+		<None Include="..\LICENSE" Pack="true" PackagePath="\" />
     </ItemGroup>
     <PropertyGroup>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <Description>NanoProxy is a lightweight .NET library for generating runtime proxies that intercept property setters.</Description>
     </PropertyGroup>	
 </Project>
