@@ -5,8 +5,13 @@
     <Platforms>AnyCPU;x64</Platforms>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>NanoProxy</Title>
-    <Version>0.2.1</Version>
+    <Authors>margadz</Authors>
+    <Copyright>margadz</Copyright>	
+    <Version>0.2.2</Version>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageProjectUrl>https://https://github.com/margadz/NanoProxy</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/margadz/NanoProxy.git</RepositoryUrl>	
+	<RepositoryType>git</RepositoryType>
   </PropertyGroup>
     <ItemGroup>
         <None Include="..\README.md" Pack="true" PackagePath="\" />

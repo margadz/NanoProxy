@@ -14,31 +14,34 @@ NanoProxy is a lightweight .NET library for generating runtime proxies that inte
 
 ### Installation
 
-Install via NuGet Package Manager:
+Add nuget package into your project [![Nuget](https://img.shields.io/nuget/v/NanoProxy?color=1182c2&logo=nuget)](https://www.nuget.org/packages/NanoProxy/)
 ```
 dotnet add package NanoProxy
 ```
-Or add NanoProxy to your solution as a project reference or include the source files in your project:
-https://github.com/margadz/NanoProxy/tree/master.
-
 
 ### Usage Example
 
 Suppose you have a class:
 ```csharp
-public class TestClass { 
-public virtual int IntegerProperty { get; set; } 
-public virtual int? NullableIntegerProperty { get; set; } 
-public virtual string StringProperty { get; set; } }
+public class TestClass 
+{ 
+    public virtual int IntegerProperty { get; set; } 
+    public virtual int? NullableIntegerProperty { get; set; } 
+    public virtual string StringProperty { get; set; } 
+}
 ```
 
 You can create a proxy and intercept property changes:
-````csharp
-var builder = new NanoProxy.NanoProxyBuilder(); var proxy = builder.CreateProxy();
-proxy.Interceptor = (value, oldValue, propertyName) => { Console.WriteLine($"Property '{propertyName}' changed from '{oldValue}' to '{value}'"); };
-proxy.WrapedObject.IntegerProperty = 42; // Interceptor is called 
-proxy.WrapedObject.NullableIntegerProperty = null; // Interceptor is called
-````
+```csharp
+var builder = new NanoProxy.NanoProxyBuilder();
+var proxy = builder.CreateProxy<TestClass>();
+proxy.Interceptor = (value, oldValue, propertyName) => 
+{
+    Console.WriteLine($"Property '{propertyName}' changed from '{oldValue}' to '{value}'"); 
+};
+proxy.WrapedObject.NullableIntegerProperty = 42; // Property 'NullableIntegerProperty' changed from '' to '42' 
+proxy.WrapedObject.NullableIntegerProperty = 2; /// Property 'NullableIntegerProperty' changed from '42' to '2' 
+```
 
 ## Testing
 
