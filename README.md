@@ -35,12 +35,17 @@ You can create a proxy and intercept property changes:
 ```csharp
 var builder = new NanoProxy.NanoProxyBuilder();
 var proxy = builder.CreateProxy<TestClass>();
-proxy.Interceptor = (value, oldValue, propertyName) => 
+proxy.Interceptor = (value, oldValue, propertyInfo) => 
 {
-    Console.WriteLine($"Property '{propertyName}' changed from '{oldValue}' to '{value}'"); 
+    Console.WriteLine($"Property '{propertyInfo}' changed from '{oldValue}' to '{value}'"); 
 };
 proxy.WrapedObject.NullableIntegerProperty = 42; // Property 'NullableIntegerProperty' changed from '' to '42' 
 proxy.WrapedObject.NullableIntegerProperty = 2; /// Property 'NullableIntegerProperty' changed from '42' to '2' 
+```
+
+Where interceptor is defined as:
+```csharp
+public delegate void SetInterceptor(object value, object oldValue, PropertyInfo propertyInfo);
 ```
 
 ## Testing
