@@ -1,7 +1,7 @@
 # NanoProxy
 
 [![Nuget](https://img.shields.io/nuget/v/NanoProxy?color=1182c2&logo=nuget)](https://www.nuget.org/packages/NanoProxy/)
-[![License](https://img.shields.io/badge/license-GPL%20v2.0-blue.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
 NanoProxy is a lightweight, high-performance .NET library for generating runtime proxies that intercept property setters. It enables scenarios such as change tracking, validation, logging, and auditing without modifying your original class code.
 
