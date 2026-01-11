@@ -66,4 +66,4 @@ NanoProxy includes NUnit-based tests. To run them:
 
 ## License
 
-This project is licensed under the [GNU General Public License v2.0](LICENSE).
+This project is licensed under the [MIT License](LICENSE).
