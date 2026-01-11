@@ -1,27 +1,30 @@
 # NanoProxy
 
-NanoProxy is a lightweight .NET library for generating runtime proxies that intercept property setters. It enables scenarios such as change tracking, validation, and logging without modifying the original class code.
+[![Nuget](https://img.shields.io/nuget/v/NanoProxy?color=1182c2&logo=nuget)](https://www.nuget.org/packages/NanoProxy/)
+[![License](https://img.shields.io/badge/license-GPL%20v2.0-blue.svg)](LICENSE)
+
+NanoProxy is a lightweight, high-performance .NET library for generating runtime proxies that intercept property setters. It enables scenarios such as change tracking, validation, logging, and auditing without modifying your original class code.
 
 ## Features
 
-- Dynamic proxy generation using `System.Reflection.Emit`
-- Intercepts property setters and exposes old/new values and property name
-- Supports both value types, nullable types and strings
-- Thread-safe proxy type caching
-- Compatible with .NET 8
+- **Dynamic Proxy Generation** - Uses `System.Reflection.Emit` for efficient runtime proxy creation
+- **Property Setter Interception** - Captures both old and new values on property changes
+- **Type Support** - Works with value types, nullable types, and reference types (strings, objects)
+- **Thread-Safe** - Built-in thread-safe proxy type caching for optimal performance
+- **Zero Dependencies** - Lightweight library with no external dependencies
+- **Virtual Property Override** - Leverages inheritance to intercept virtual property setters
+- **.NET 8 Compatible** - Built for modern .NET applications
 
-## Getting Started
+## Installation
 
-### Installation
-
-Add nuget package into your project [![Nuget](https://img.shields.io/nuget/v/NanoProxy?color=1182c2&logo=nuget)](https://www.nuget.org/packages/NanoProxy/)
-```
+Install NanoProxy via NuGet Package Manager:
+```bash
 dotnet add package NanoProxy
 ```
 
-### Usage Example
+## Usage Example
 
-Suppose you have a class:
+Suppose you have a class (currently parameterless constructor is required):
 ```csharp
 public class TestClass 
 { 
@@ -31,7 +34,7 @@ public class TestClass
 }
 ```
 
-You can create a proxy and intercept property changes:
+You can create a proxy and intercept virtual property changes:
 ```csharp
 var builder = new NanoProxy.NanoProxyBuilder();
 var proxy = builder.CreateProxy<TestClass>();
@@ -58,7 +61,7 @@ NanoProxy includes NUnit-based tests. To run them:
 
 ## Requirements
 
-- .NET 8
+- .NET 8.0 or later
 - Visual Studio 2022 or compatible IDE
 
 ## License
